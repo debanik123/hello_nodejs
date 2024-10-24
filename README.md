@@ -8,7 +8,7 @@ hello world with nodejs
     sudo systemctl restart docker
     docker ps
 
-    http://222.99.248.55:8080/github-webhook/
+    
 
     1. Set Up GitHub Webhook (Recommended)
         This method triggers the Jenkins job automatically when a change is pushed to the repository, without needing to poll constantly.
@@ -53,7 +53,7 @@ hello world with nodejs
         H/5 * * * *
         This will trigger a build if there are any changes in the repository during the last 5 minutes.
         Save and Apply:
-        
+
         Click Save.
     3. Ensure Jenkins Has Proper GitHub Credentials
         Make sure Jenkins has the correct GitHub credentials set up under Source Code Management in the job configuration, or it won't be able to access your repository.
@@ -66,6 +66,23 @@ hello world with nodejs
 
         Make a commit and push changes to the GitHub repository.
         Jenkins should automatically detect the change and trigger a build.
+
+    Deploy Jenkins to a Public Server
+        If you want a more permanent solution:
+
+        Host Jenkins on a Public Server:
+
+        You can set up Jenkins on a cloud service (like AWS, DigitalOcean, or Azure) or a dedicated server that has a public IP address.
+        Configure Domain Name (Optional):
+
+        If you want a more user-friendly URL, consider purchasing a domain name and pointing it to your server.
+        Set Up the Webhook:
+
+        Once your Jenkins server is publicly accessible, you can set up the GitHub webhook to point to your server's public address:
+        bash
+        Copy code
+        http://your-public-server-ip:8080/github-webhook/
+        http://222.99.248.55:8080/github-webhook/
 
 ```
 
