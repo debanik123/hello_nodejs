@@ -24,7 +24,7 @@ pipeline {
             steps {
                 script {
                     // Run the Docker container
-                    sh 'docker run -d -p 3000:3000 --name node-hello-world node-hello-world'
+                    sh 'docker run -d --name node-hello-world node-hello-world'
                 }
             }
         }
