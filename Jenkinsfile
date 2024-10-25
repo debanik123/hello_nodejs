@@ -35,7 +35,8 @@ pipeline {
         always {
             script {
                 // Clean up the Docker container after deployment
-                sh 'docker rm -f hello_nodejs || true'
+                sh 'docker kill hello_nodejs'
+                sh 'docker rm hello_nodejs'
             }
         }
     }
