@@ -24,20 +24,21 @@ pipeline {
         stage('Deploy') {
             steps {
                 script {
+                    sh 'echo "Running Deployment..."'
                     // Run the Docker container
-                    sh 'docker run -d -p 3000:3000 --name hello_nodejs node-hello-world'
+                    // sh 'docker run -d -p 3000:3000 --name hello_nodejs node-hello-world'
                 }
             }
         }
     }
 
-    post {
-        always {
-            script {
-                // Clean up the Docker container after deployment
-                sh 'docker kill hello_nodejs'
-                sh 'docker rm hello_nodejs'
-            }
-        }
-    }
+    // post {
+    //     always {
+    //         script {
+    //             // Clean up the Docker container after deployment
+    //             sh 'docker kill hello_nodejs'
+    //             sh 'docker rm hello_nodejs'
+    //         }
+    //     }
+    // }
 }

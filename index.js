@@ -8,7 +8,7 @@ const server = http.createServer((req, res) => {
     if (req.url === '/') {
         // Respond to the root URL ("/")
         res.statusCode = 200;
-        res.end('Hello World\n');
+        res.end('Hello World \n');
     } else if (req.url === '/dummy') {
         // Respond to the dummy API URL ("/dummy")
         res.statusCode = 200;
