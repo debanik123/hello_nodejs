@@ -5,8 +5,13 @@ pipeline {
         stage('Build') {
             steps {
                 script {
-                    // Pull the latest code and build Docker image
-                    // sh 'docker rmi --force $(docker images --filter "dangling=true" -q --no-trunc)'
+                    // Check if there are any dangling images
+                    def danglingImages = sh(script: 'docker images --filter "dangling=true" -q --no-trunc', returnStdout: true).trim()
+                    
+                    // If dangling images exist, remove them
+                    if (danglingImages) {
+                        sh "docker rmi --force ${danglingImages}"
+                    }
                     sh 'docker build -t node-hello-world .'
                 }
             }
