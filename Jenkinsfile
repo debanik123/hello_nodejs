@@ -20,22 +20,22 @@ pipeline {
             }
         }
 
-        stage('Deploy') {
-            steps {
-                script {
-                    // Run the Docker container
-                    sh 'docker run -d --name node-hello-world node-hello-world'
-                }
-            }
-        }
+        // stage('Deploy') {
+        //     steps {
+        //         script {
+        //             // Run the Docker container
+        //             sh 'docker run -d --name node-hello-world node-hello-world'
+        //         }
+        //     }
+        // }
     }
 
-    post {
-        always {
-            script {
-                // Clean up the Docker container after deployment
-                sh 'docker rm -f node-hello-world || true'
-            }
-        }
-    }
+    // post {
+    //     always {
+    //         script {
+    //             // Clean up the Docker container after deployment
+    //             sh 'docker rm -f node-hello-world || true'
+    //         }
+    //     }
+    // }
 }
