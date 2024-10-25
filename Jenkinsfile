@@ -39,10 +39,10 @@ pipeline {
                     }
 
                     // Tag the image before pushing
-                    // sh 'docker tag node-hello-world wonbot/node-hello-world:latest' // Tag with your Docker Hub username
+                    sh 'docker tag node-hello-world wonbot/node-hello-world:latest' // Tag with your Docker Hub username
                     
                     // Push the image to Docker Hub
-                    // sh 'docker push wonbot/node-hello-world:latest' // Push to Docker Hub
+                    sh 'docker push wonbot/node-hello-world:latest' // Push to Docker Hub
                 }
             }
         }
