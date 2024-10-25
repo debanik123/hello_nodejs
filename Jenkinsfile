@@ -10,7 +10,8 @@ pipeline {
                     
                     // If dangling images exist, remove them
                     if (danglingImages) {
-                        sh "docker rmi --force ${danglingImages}"
+                        sh 'docker rmi --force $(docker images --filter "dangling=true" -q --no-trunc)'
+                        
                     }
                     sh 'docker build -t node-hello-world .'
                 }
