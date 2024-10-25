@@ -6,7 +6,7 @@ pipeline {
             steps {
                 script {
                     // Pull the latest code and build Docker image
-                    sh 'docker rmi --force $(docker images --filter "dangling=true" -q --no-trunc)'
+                    // sh 'docker rmi --force $(docker images --filter "dangling=true" -q --no-trunc)'
                     sh 'docker build -t node-hello-world .'
                 }
             }
