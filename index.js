@@ -12,7 +12,7 @@ const server = http.createServer((req, res) => {
     } else if (req.url === '/dummy') {
         // Respond to the dummy API URL ("/dummy")
         res.statusCode = 200;
-        res.end('This is the dummy API response \n');
+        res.end('This is the dummy API response for jenkins build \n');
     } else {
         // Handle 404 Not Found for other URLs
         res.statusCode = 404;
