@@ -27,7 +27,26 @@ pipeline {
                 }
             }
         }
+        stage('Push to Docker Hub') {
+            steps {
+                script {
+                    // Define Docker Hub credentials
+                    def dockerHubCredentials = 'dockerhub-credentials' // Use the credentials ID you set
 
+                    // Login to Docker Hub
+                    withCredentials([usernamePassword(credentialsId: dockerHubCredentials, usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD')]) {
+                        sh 'echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin'
+                    }
+
+                    // Tag the image before pushing
+                    sh 'docker tag node-hello-world roy@shcnm.co.kr/node-hello-world:latest' // Tag with your Docker Hub username
+                    
+                    // Push the image to Docker Hub
+                    sh 'docker push roy@shcnm.co.kr/node-hello-world:latest' // Push to Docker Hub
+                }
+            }
+        }
+        
         stage('Deploy') {
             steps {
                 script {
