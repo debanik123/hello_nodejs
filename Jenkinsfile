@@ -5,6 +5,8 @@ pipeline {
         stage('Build') {
             steps {
                 script {
+                    
+                    sh 'docker build -t node-hello-world .'
                     // Check if there are any dangling images
                     def danglingImages = sh(script: 'docker images --filter "dangling=true" -q --no-trunc', returnStdout: true).trim()
                     
@@ -13,7 +15,6 @@ pipeline {
                         sh 'docker rmi --force $(docker images --filter "dangling=true" -q --no-trunc)'
                         
                     }
-                    sh 'docker build -t node-hello-world .'
                 }
             }
         }
