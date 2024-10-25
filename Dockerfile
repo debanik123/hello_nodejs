@@ -12,7 +12,7 @@ RUN apt-get update && apt-get install --no-install-recommends -y \
          ros-${ROS_DISTRO}-test-msgs \
          ros-${ROS_DISTRO}-example-interfaces \
          ros-${ROS_DISTRO}-rmw-cyclonedds-cpp \
-    && curl -fsSL https://deb.nodesource.com/setup_${NODE_MAJOR_VER}.x | sudo -E bash - \
+    && curl -fsSL https://deb.nodesource.com/setup_${NODE_MAJOR_VER}.x | -E bash - \
     && apt-get install -y nodejs
 
 # Create app directory
